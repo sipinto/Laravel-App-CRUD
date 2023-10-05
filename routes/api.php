@@ -25,7 +25,7 @@ Route::get('/config',function(){
 
 // env 메서드 사용
 Route::get('/env', function (){
-    return env();
+    return env('APP_KEY');
 });
 
 
