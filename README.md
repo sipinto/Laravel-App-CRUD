@@ -1,66 +1,209 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# 라라벨 학습 정리
 
-## About Laravel
+## 1강. 개발 환경 설정
+- 라라벨 프로젝트 설치 방법
+  - 전제 조건
+    - PHP 설치
+    - Composer설치
+    - Laravel 설치
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+  - 라라벨로 설치 시
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+    `laravel new 프로젝트명`
+  - 컴포저로 설치 시
+  
+    `composer create-project --prefer-dist  laravel/laravel 프로젝트명`
+  - 실행 전 애플리케이션의 고유 암호화 키 생성
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+    `php artisan key:generate`
+  - 개발자 서버 실행 
 
-## Learning Laravel
+    `php artisan serve`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 2강. 설정 관련 이모저모
+- config 파사드 or config() 메서드 사용 방법
+    - config 파사드
+  
+      `Config::get('app.name');`
+    - config 메서드
+        
+        `config('app.name');`
+- env() 메서드로 .env파일에 있는 환경변수 참조
+    
+    `env('APP_URL');`
+    - 주의 사항 
+      - env() 메서드는 config 디렉터리 이외에서는 사용하지 말것
+      - 배포시에 제대로 동작하지 않고 null값 반환
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## 3. 라라벨 동작
+- 라라벨 작동 방식
+  - /public 디렉터리에 있는 index.php으로 모든 요청이 들어오면서 시작함.
+## 4. 라라벨 브리즈
+- 라라벨 브리즈 설치 (스타터 킷) 
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+    `composer require laravel/breeze --dev`
+    
+    
+    `php artisan migrate`
+    
+    `npm install`
 
-## Laravel Sponsors
+    `npm dev`
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- '/' 홈 화면에서 로그인 후 dashboard가 아닌 home으로 이동 시키고 싶을 시
+    - App\Provider\RouteServiceProvider.php에서
 
-### Premium Partners
+        `public const HOME = '/dashboard';` 에서
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+        `public const HOME = '/';` 으로 변경
 
-## Contributing
+## 5. 글쓰기 화면 만들기
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 6. 자바스크립트와 CSS 불러오기
+
+
+
+## 7. 테일윈드 CSS로 꾸미기
+
+## 8. 글 저장하기 라우트 추가하기
+
+## 9. 유효성 검사
+## 10. 에러 메세지 표시하기
+
+
+## 11. 한글화 하기
+
+
+## 12. 폼 다시 채워주기
+
+
+## 13. 마이그레이션
+
+
+## 14. 글 저장하기 
+
+## 15. 대량 할당
+
+
+
+## 16. 글 목록 보여주기
+
+
+## 17. 블레이드 기초
+
+## 18.글 정렬하기
+
+## 19. 페이지네이션
+
+
+## 20. 사람이 보기 좋은 시간 데이터로 변경하기
+
+## 21. 작성자 이름 표시하기
+
+
+## 22. 데이터 조회 횟수 줄이기
+
+
+## 23. 엘로퀸트 스트릭트 모드
+
+
+
+## 24. 개별글 조회하기
+
+
+
+
+## 25. 라우트 이름 
+
+
+
+## 26. 글 수정하기
+
+
+## 27. 글 삭제하기
+
+
+## 28. 컨트롤러 라우트 그룹
+
+
+## 29. 테스트
+
+
+
+## 30. 리소스 컨트롤러
+
+
+
+## 31. 블레이드 컴포넌트 레이아웃
+
+##
+
+
+##
+
+
+##
+
+
+##
+
+##
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
