@@ -60,12 +60,16 @@
         `public const HOME = '/';` 으로 변경
 
 ## 5. 글쓰기 화면 만들기
+- 블레이드 파일 생성 위치
+  - resources/views 안에 생성
+- 라우팅 방법
+  - routes/web.php에 라우트 등록
 
-
-
-
-
-
+  ```
+  Route::get('/라우트명',function(){
+    return view('라우트 위치');
+  });
+  ```
 
 ## 6. 자바스크립트와 CSS 불러오기
 
