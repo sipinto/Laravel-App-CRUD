@@ -84,6 +84,18 @@
 
 
 ## 7. 테일윈드 CSS로 꾸미기
+- html에 테일윈드 css 입히려면
+  - 공식문서에 있는 클래스 작명 문법을 보자
+  - 예시
+    ```
+    <div class="container p-5">
+        <h1 class="text-2xl">글쓰기</h1>
+        <form action="/articles" method="POST" class="mt-3">
+            <input type="text" class="black w-full mb-2">
+            <input type="button" value="저장하기" class="py-1 px-3 bg-black text-white rounded text-xs">
+        </form>
+    </div>
+    ```
 
 ## 8. 글 저장하기 라우트 추가하기
 
