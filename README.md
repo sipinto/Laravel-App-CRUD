@@ -120,13 +120,46 @@
     ```
 
 ## 9. 유효성 검사
-
-
-
+- 요청 받은 데이터를 검사하고 싶다면
+  - 요청을 사용할 파일의 상단에 use문 입력
+  
+    `use Illuminata\Http\Request;` 입력
+  - 받을 요청의 메서드에 요청 주입 및 validation 문법 예시
+  ```
+  Route::post('/articles', function (Request $request){
+    $request->validate([
+        'body' => 'required|string|max:255',
+    ]);
+    return 'validate complete!';
+  });
+  ```
 
 ## 10. 에러 메세지 표시하기
+- 디버깅 시 유용한 함수
+  
+    `dd('check value');`
+  
+  -> 해당 메서드가 실행되면 모든 동작이 중단되고, 안에 있는 값을 보여준다. 
+- 에러를 확인하고 싶다면
+  - dd 함수 활용 & errors 활용
+    
+    `{{ dd($errors->any()) }}`
 
-
+    `{{ dd($errors->all()) }}`
+    
+    -> errors는 에러 발생 시의 정보가 나오는 변수이다.
+- 특정 에러 컨트롤
+  - 특정 에러에 대해서만 다루고 싶다면
+  
+    `$errors->all('body')`
+- 블레이드에서 error를 다루고 싶다면
+  - 지시자 @를 사용하여
+    ```
+    <!-- 시작 구간 -->
+    @error('error를 확인할 태그명')
+    <!-- 종료 구간 -->
+    @enderror
+    ```
 ## 11. 한글화 하기
 
 
