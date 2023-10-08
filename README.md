@@ -190,7 +190,10 @@
       `php artisan lang:update`
 
 ## 12. 폼 다시 채워주기
-- 
+- 세션에 있는 값을 확인 하려면
+  - request -> old 메서드 확인
+  - old 메서드안에 특정 값 입력 (ex. body)
+  - 글로벌 헬퍼인 old 메서드 사용 
 
 
 
