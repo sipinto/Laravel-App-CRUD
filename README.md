@@ -96,10 +96,35 @@
         </form>
     </div>
     ```
-
 ## 8. 글 저장하기 라우트 추가하기
+- 폼에 정보를 전달해, 정보를 저장하거나 변경하고 싶으면
+  - post 라우트를 등록 해야함 (web.php)
+  - Ex ) 
+    ```
+    Route::post('/articles', function (){
+      return 'hello';
+    });
+    ```
+  - 블레이드 폼에 csrf토큰도 삽입 되어 있어야 함
+    - @csrf 로만 넣거나
+    ``` 
+    <form action="/articles" method="POST" class="mt-3">
+        @csrf
+    </form>
+    ```
+    - input 태그로 넣거나
+    ```
+    <form action="/articles" method="POST" class="mt-3">
+        <input type="hidden" name="_token" value="<?php echo csrf_token();?>">
+    </form>
+    ```
+
 
 ## 9. 유효성 검사
+
+
+
+
 ## 10. 에러 메세지 표시하기
 
 
