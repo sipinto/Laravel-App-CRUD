@@ -72,7 +72,15 @@
   ```
 
 ## 6. 자바스크립트와 CSS 불러오기
-
+- 라라벨에서 resources안에 있는 자원을 불러오기 위해서는
+  - vite() 메서드를 사용 하면 된다
+  - vite() 메서드 사용 법
+  ```
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+  ```
+- 공식 문서에서 찾아 보려면...
+  - Asset Bundling (vite)
+    - Loading Your Scripts And Style
 
 
 ## 7. 테일윈드 CSS로 꾸미기
