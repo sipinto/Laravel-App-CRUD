@@ -1,0 +1,9 @@
+.header-container {
+    display: flex;
+    justify-content: center; /* 가로축에서 중앙 정렬 */
+    align-items: center; /* 세로축에서 중앙 정렬 */
+}
+
+h1 {
+    color: aqua;
+}
