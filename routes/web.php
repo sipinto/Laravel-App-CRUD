@@ -28,14 +28,14 @@ Route::get('/main',function (){
 });
 
 // 공지사항 페이지
-Route::get('/main',function (){
-    return view('main');
-});
+Route::get('/notice',function (){
+    return view('notice');
+})->name('notice');
 
 // 게시판 페이지
-Route::get('/main',function (){
-    return view('main');
-});
+Route::get('/board',function (){
+    return view('board');
+})->name('board');
 
 // 회원 가입 페이지
 Route::get('/register',function (){

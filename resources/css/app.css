@@ -1,9 +1,29 @@
+body {
+    width: 1200px;
+}
+div {
+    display: flex;
+}
 .header-container {
     display: flex;
-    justify-content: center; /* 가로축에서 중앙 정렬 */
-    align-items: center; /* 세로축에서 중앙 정렬 */
+    /* justify-content: center;  */
+    /* 가로축에서 중앙 정렬 */
+    /* align-items: center;  */
+    /* 세로축에서 중앙 정렬 */
+}
+.logo {
+    position: absolute;
+    right: 0;
+    left: 0;
+    justify-content: center; 
+    /* 가로축에서 중앙 정렬 */
+    align-items: center; 
+    /* 세로축에서 중앙 정렬 */
+
 }
 
-h1 {
-    color: aqua;
+.ok {
+    background-color: blue;
 }
+
+/* 이거 사용금지x */
