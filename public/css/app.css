@@ -1,17 +1,128 @@
-.header-container {
+/* 헤더 */
+.header {
     display: flex;
     justify-content: center; /* 가로축에서 중앙 정렬 */
     align-items: center; /* 세로축에서 중앙 정렬 */
 }
-
-div {
+nav {
     width: 1280px;
     text-align: center;
 }
-
-.wrap {
+.logo {
     text-align: center;
 }
+
+/* 컨테이너 */
+.container {
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+}
+.aside {
+    text-align: center;
+    width: 300px;
+    padding: 0;
+    border-color: ;
+}
+.content {
+    text-align: center;
+    width: 980px;
+    height: 1000px;
+    padding: 0;
+    /* background-color: darkgray; */
+}
+
+.aside, .content {
+    box-sizing: border-box; /* padding과 border 값을 총 너비/높이에서 제외 */
+}
+
+.myMenu {
+    
+    display: flex;
+    justify-content: space-between;
+
+}
+.profile{
+    justify-content: space-between;
+    width: 300px;
+    height: 140px;
+    border: solid 1px black; /* 경계선 색상을 파란색으로 설정합니다 */
+    border-width: thick; /* 경계선 두께를 굵게 설정합니다 (thin, medium, thick 중 선택) */
+    display: flex;
+    align-items: center; /* 세로 중앙 정렬 */
+    
+}
+.myImage{
+    margin: 10px;
+    display: flex;
+    float: left;
+    width: 25%;
+    height: auto;
+    border-radius: 50%; /* 이미지를 원형으로 만듭니다 */
+    border: solid black; /* 빨간색 실선 경계선을 추가합니다 */
+    border-width: 1px; /* 얇은 실선 경계선으로 설정합니다 */
+}
+.logout-wrap{
+    display: block;
+    width: 75%;
+    height: 100%;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */}
+.logout {
+    margin: 10px;
+    margin-left: 90px;
+}
+.user_intro{
+    margin: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.profile-about {
+    width: 100px;
+    height: 30px;
+    /* display: flex;
+   
+    width: 300px; */
+}
+
+.myPage, .write {
+    width: 150px;
+    height: 50px;
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    color: #6ea8fe;
+}
+
+.my-active {
+    border: solid 1px black; /* 경계선 색상을 파란색으로 설정합니다 */
+    border-width: thick; /* 경계선 두께를 굵게 설정합니다 (thin, medium, thick 중 선택) */
+    
+
+    width: 300px;
+    height: 600px;
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+}
+
+
+/* 푸터 */
+.footer {
+    display: flex;
+    width: 100%;
+    height: 200px;
+    background-color: #dee2e6;
+}
+
+
+/* etc */
+
+.wrap {
+    width: 1280px;
+}
+
 body {
     display: flex;
     justify-content: center;
