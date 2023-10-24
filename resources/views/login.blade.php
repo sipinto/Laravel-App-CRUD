@@ -5,6 +5,7 @@
     <title>로그인 페이지</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
 </head>
 <body>
     <div class="wrap">
@@ -13,6 +14,7 @@
                 <img src="{{ asset('storage/img/logo.jpg') }}" alt="Image">
             </div>
         </div>
+        
         <div class="container">
             <div class="login-container">
                 {{-- 로그인 헤더 --}}
@@ -37,7 +39,7 @@
                       </form>
                 </div>
                 <div id="회원가입">
-                    <div>회원가입 페이지 리다이렉트 ><</div>
+                        <a href="{{ url('/register') }}" class="btn btn-info" role="button">회원가입</a>
                 </div>
             </div>
             </div>

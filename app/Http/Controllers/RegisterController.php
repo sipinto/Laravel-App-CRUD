@@ -30,7 +30,7 @@ class RegisterController extends Controller
 
             User::create($validated);
 
-            return redirect()->route('login')->with('alert', '회원 등록이 완료되었습니다.'); 
+            return redirect()->route('login'); 
 
         } catch (Throwable $e) {
             report($e);

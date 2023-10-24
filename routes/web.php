@@ -28,7 +28,7 @@ Route::get('/login', function () {
 // 메인 페이지
 Route::get('/main',function (){
     return view('main');
-});
+})->name('main');
 
 // 공지사항 페이지
 Route::get('/notice',function (){

@@ -8,6 +8,11 @@
 </head>
 <body>
   <div class="wrap">
+    @if(session('token'))
+    <div class="alert alert-success">
+        {{ session('token') }}
+    </div>
+    @endif
     {{-- 최상단 로고 --}}
     <div class="logo">  
       <img src="{{ asset('storage/img/logo.jpg') }}" alt="Image">
