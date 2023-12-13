@@ -8,14 +8,11 @@
 </head>
 <body>
   <div class="wrap">
-    @if(session('token'))
-    <div class="alert alert-success">
-        {{ session('token') }}
-    </div>
-    @endif
     {{-- 최상단 로고 --}}
     <div class="logo">  
-      <img src="{{ asset('storage/img/logo.jpg') }}" alt="Image">
+      <a href="{{ route('main') }}">
+        <img src="{{ asset('storage/img/logo.jpg') }}" alt="Image" style="width: 15%">
+      </a>
     </div>
     {{-- 헤더 --}}
     <div class="header">
@@ -27,12 +24,6 @@
                 <li class="nav-item">
                   <a class="nav-link" href="/board">게시판</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">미정</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">미정</a>
-                </li>
             </ul>
         </nav>
     </div>
@@ -41,91 +32,69 @@
       {{-- 프로필 좌 --}}
       <div class="aside">
         <div class="profile">
-          <img class="myImage" src="{{ asset('storage/img/로꼬.png') }}" alt="Image">
-          
+          <img class="myImage" src="{{ asset('storage/img/로꼬.png') }}" alt="Image"> 
           <div class="logout-wrap">
-            <button type="button" class="btn btn-dark logout">로그아웃</button>
-            <div class="user_intro">안녕하세요 김민재 님</div>
+            <form method="POST" action="{{ route('logout') }}">
+              @csrf
+              <input type="hidden" name="token" value="{{ session('token') }}">
+              <button type="submit" class="btn btn-dark logout">로그아웃</button>
+            </form>   
+            <div class="user_intro">안녕하세요 {{ session('name') }}님</div>
           </div>
         </div>
         <div class="myMenu bg-dark">
-          <div class="myPage">마이페이지</div>
-          <div class="write">글쓰기</div>
-        </div>
-        <div class="my-active">
-          댓글알림 & 나의 활동란
+          <div class="myPage">
+            <a class="nav-link active" aria-current="page" href="/myPage">
+              마이페이지
+            </a>
+          </div>
+          <div class="write">
+            <a class="nav-link active" aria-current="page" href="/writePage">
+              글쓰기
+            </a>
+          </div>
         </div>
       </div>
       {{-- 글목록 우 --}}
       <div class="content">
           {{-- 공지사항 --}}
           <div class="notice">
-            <table class="table caption-top">
-              <caption>List of users</caption>
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
-                </tr>
-              </thead>
-              <tbody class="table-group-divider">
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="captionTitle">
+              <h2>공지사항</h2>
+            </div>
+            <div class="carousel">
+              @foreach ($notice as $singleNotice)
+                <div class="Card">
+                  <a href="/notice/{{$singleNotice->id}}" class="custom-link">
+                    @foreach($singleNotice->images as $image)
+                    <img src="{{ asset($image->imgAdd) }}" alt="{{ $image->imgName }}" class="cardImg" onerror="this.onerror=null; this.src='{{ asset('storage/img/분실물.jpg') }}'" >
+                    @endforeach
+                    <p class="explainP">{{$singleNotice->title}}</p>
+                  </a>
+                </div>
+              @endforeach
+            </div>
           </div>
+          <hr>
           {{-- 전체글보기 --}}
           <div class="board">
-            <table class="table caption-top">
-              <caption>List of users</caption>
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="captionTitle">
+              <h2>게시판</h2>
+            </div>
+            <div class="carousel">
+              @foreach ($board as $singleBoard)
+                <div class="Card">
+                  <a  href="/board/{{$singleBoard->id}}" class="custom-link">
+                    @foreach($singleBoard->images as $image)
+                    <img src="{{ asset($image->imgAdd) }}" alt="{{ $image->imgName }}" class="cardImg" onerror="this.onerror=null; this.src='{{ asset('storage/img/분실물.jpg') }}'">
+                    @endforeach
+                    <p class="explainP">{{$singleBoard->title}}</p>
+                  </a>
+                </div>
+              @endforeach
+            </div>
           </div>
+          
       </div>
     </div>
     {{-- 푸터 --}}
@@ -133,7 +102,10 @@
       푸터
     </div>
   </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  @if(Session::has('alert'))
+  <script>
+    alert('{{ Session::get('alert') }}');
+  </script>
+  @endif
 </body>
 </html>

@@ -57,41 +57,24 @@
       </div>
       {{-- 글목록 우 --}}
       <div class="content">
-    
         <div class="writeWrap">
           <div class="titleWrap">
             <div class="titleBlock">마이 페이지</div>
           </div>
-          <div style="display: flex">
-            <form id="articleForm" action="{{route('user.edit')}}" method="POST" class="form-container" enctype="multipart/form-data">
+          
+            <form id="articleForm" action="user/destroy/{{session("email")}}" method="POST" class="form-container" enctype="multipart/form-data">
               @csrf
-              @method('PUT') <!-- Initially, the method is POST -->
-              <div class="mb-3 formflex">
-                <label for="category" class="form-label">이름</label>
-                <input class="form-control" type="text" value="{{ session('name') }}" aria-label="Disabled input example" type="disable" readonly>
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">이메일</label>
-                <input type="text" class="form-control" id="email" name="email" value="{{ session('email') }}" type="disable" readonly>
-              </div>
-              
+              @method('DELETE') <!-- Initially, the method is POST -->
                 <div class="mb-3">
                   <label for="content" class="form-label">비밀번호 확인</label>        
                   <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="비밀번호를 입력해주세요">  
                 </div>
                 <div class="buttonList">
                   <a href='/main' class="btn btn-secondary myPageCancle detailWrite">취소</a> 
-                  <button type="submit" class="btn btn-dark myPageEdit detailList">수정</button>
-                  <a href='/deleteUser' class="btn btn-danger myPageCancle detailDelete">탈퇴하러가기</a> 
-                    
+                  <button type="submit" class="btn btn-danger detailList" style="width:100px">회원탈퇴</button>
                 </div>
-              
             </form>
-            
-          </div>
-          
       </div>
-          
         <div class="session-data">
           @foreach (session()->all() as $key => $value)
             <p>{{ $key }}: {{ is_array($value) ? json_encode($value) : $value }}</p>
